@@ -398,3 +398,12 @@ static void SPI_SLAVE_ISR_ATTR spi_intr(void *arg)
     }
     if (do_yield) portYIELD_FROM_ISR();
 }
+
+// HACK for polling from user application
+spi_slave_hal_context_t *spi_get_private_host(spi_host_device_t host) {
+    return &spihost[host]->hal;
+}
+
+void spi_slave_detach_irq(spi_host_device_t host) {
+    esp_intr_free(spihost[host]->intr);
+}
