@@ -116,7 +116,7 @@ extern "C" {
 
 // This allows using enum as flags in C++
 // Format: FLAG_ATTR(flag_enum_t)
-#ifdef __cplusplus
+#if 0 //def __cplusplus
 
 // Inline is required here to avoid multiple definition error in linker
 #define FLAG_ATTR_IMPL(TYPE, INT_TYPE) \
